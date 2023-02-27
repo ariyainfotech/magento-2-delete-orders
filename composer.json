@@ -1,0 +1,30 @@
+{
+    "name": "ariyainfotech/module-backendorderdelete",
+    "description": "Currently, Magento doesn't allow you to delete an order from your store. This extension will help you to do that, simple but helpful.",
+    "type": "magento2-module",
+    "version":"1.0.9",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Ariya InfoTech",
+            "email": "info@ariyainfotech.com"
+        },
+        {
+            "name": "Yuvraj Raulji",
+            "email": "toyuvrajraulji@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "~5.5.0|~5.6.0|^7.0|^8.1",
+        "ariyainfotech/module-base": "1.*"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "AriyaInfoTech\\BackendOrderDelete\\": ""
+        }
+    }
+}
