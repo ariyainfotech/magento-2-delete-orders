@@ -18,7 +18,6 @@ class MassDelete extends AbstractMassAction
  
     /**
      * Constructor
-     *
      * @param Context $context
      * @param Filter $filter
      * @param CollectionFactory $collectionFactory
@@ -37,16 +36,16 @@ class MassDelete extends AbstractMassAction
     }
 
     /**
-     *
      * @param AbstractCollection $collection
      * @return \Magento\Backend\Model\View\Result\Redirect
+     * massAction function is use for mass delete or single delete
      */
     protected function massAction(AbstractCollection $collection)
     {
         $bsckednEnabelDisabel = $this->_backedorderdeletehelper->isModuleEnabel();
         $resultRedirect = $this->resultRedirectFactory->create();
         $resultRedirect->setPath($this->getComponentRefererUrl());
-        if($bsckednEnabelDisabel == 1){
+        if ($bsckednEnabelDisabel == 1) {
             $count = 0;
             foreach ($collection->getItems() as $order) {
                 $order->delete();
@@ -57,7 +56,7 @@ class MassDelete extends AbstractMassAction
             } else {
                 $this->messageManager->addError(__('There is a problem.'));
             }
-        }else{
+        } else {
             $this->messageManager->addError(__('Please Enable Module And Try Again'));
         }
         return $resultRedirect;
