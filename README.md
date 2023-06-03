@@ -46,6 +46,3 @@ Currently, Magento doesn't allow you to delete an order from your store. This ex
 
 
 ## Attributes
-
-
-
