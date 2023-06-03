@@ -43,10 +43,10 @@ class MassDelete extends AbstractMassAction
      */
     protected function massAction(AbstractCollection $collection)
     {
-        $bsckednEnabelDisabel = $this->_backedorderdeletehelper->getConfigValue('deleteorder/general/enable');
+        $bsckednEnabelDisabel = $this->_backedorderdeletehelper->isModuleEnabel();
         $resultRedirect = $this->resultRedirectFactory->create();
         $resultRedirect->setPath($this->getComponentRefererUrl());
-        if($bsckednEnabelDisabel){
+        if($bsckednEnabelDisabel == 1){
             $count = 0;
             foreach ($collection->getItems() as $order) {
                 $order->delete();

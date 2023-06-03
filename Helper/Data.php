@@ -10,15 +10,32 @@ namespace AriyaInfoTech\BackendOrderDelete\Helper;
 use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Store\Model\ScopeInterface;
 
-class Data extends AbstractHelper{
+class Data extends AbstractHelper
+{
+	/**
+     * @var ScopeConfigInterface
+     */
+	protected $_scopeConfig;
 
-	const XML_PATH_BACKENDORDERDELETE = 'deleteorder/';
-
-	public function getConfigValue($field, $storeId = null){
-		return $this->scopeConfig->getValue($field, ScopeInterface::SCOPE_STORE, $storeId);
+	 /**
+     * Constructor
+     *
+     * @param Context $context
+     * @param ScopeConfigInterface $scopeConfig
+     */
+     
+	public function __construct(
+        \Magento\Framework\App\Helper\Context $context,
+        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
+	){
+		$this->_scopeConfig = $scopeConfig;
+		parent::__construct($context);
 	}
 
-	public function getGeneralConfig($code, $storeId = null){
-		return $this->getConfigValue(self::XML_PATH_BACKENDORDERDELETE .'general/'. $code, $storeId);
+	/*
+    *get config value for enable/disable
+    **/
+	public function isModuleEnabel(){
+		return $this->_scopeConfig->getValue('orderdelete/general/enable',\Magento\Store\Model\ScopeInterface::SCOPE_STORE);
 	}
 }
